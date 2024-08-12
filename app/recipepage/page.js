@@ -13,8 +13,10 @@ export default function RecipePage() {
     try {
       const items = recipeItems.split(',').map(item => item.trim()).join(',');
       
-      const server_url = process.env.SERVER_URL;
-      const response = await fetch(`http://inventory-server-flax.vercel.app/api/recipe?items=${encodeURIComponent(items)}`);
+      // const server_url = process.env.SERVER_URL;
+      // const response = await fetch(`http://inventory-server-flax.vercel.app/api/recipe?items=${encodeURIComponent(items)}`);
+      const server_url = process.env.NEXT_PUBLIC_SERVER_URL;
+      const response = await fetch(`${server_url}/api/recipe?items=${encodeURIComponent(items)}`);
       if (!response.ok) {
         throw new Error('Failed to fetch recipe');
       }

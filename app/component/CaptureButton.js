@@ -31,8 +31,8 @@ export default function CaptureButton({ onCapture }) {
     try {
       const formData = new FormData();
       formData.append('image', imageFile);
-  
-      const response = await fetch('http://inventory-server-flax.vercel.app/api/image', {
+      const server_url = process.env.NEXT_PUBLIC_SERVER_URL;
+      const response = await fetch(`${server_url}/api/image`, {
         method: 'POST',
         body: formData,
       });
